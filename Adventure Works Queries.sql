@@ -39,4 +39,21 @@ LEFT JOIN Sales.Store v
 ON p.BusinessEntityID = v.SalesPersonID
 WHERE p.PersonType = 'SP'
 GROUP BY p.FirstName
-ORDER BY OrderCount DESC
+ORDER BY OrderCount DESC;
+
+-- Show employee information and their tenure in Years
+SELECT 
+p.FirstName,
+p.LastName,
+hre.JobTitle,
+hrd.StartDate,
+hrd.EndDate,
+CASE
+	WHEN hrd.EndDate IS NULL THEN DATEDIFF(YEAR, hrd.StartDate, GETDATE())
+	ELSE DATEDIFF(YEAR, hrd.StartDate, hrd.EndDate)
+END AS 'Tenure(Years)'
+FROM Person.Person p 
+JOIN HumanResources.EmployeeDepartmentHistory hrd
+ON p.BusinessEntityID = hrd.BusinessEntityID
+JOIN HumanResources.Employee hre
+ON hrd.BusinessEntityID = hre.BusinessEntityID;
