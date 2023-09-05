@@ -22,11 +22,12 @@ ORDER BY s.Bonus DESC;
 -- SELECT EMPLOYEE WHO DONT HAVE ORDERS WITH 'Riders Company
 SELECT FirstName
 FROM Person.Person
-WHERE FirstName NOT IN (SELECT p.FirstName
-			FROM Person.Person p
-			JOIN Sales.Store v
-			ON p.BusinessEntityID = v.SalesPersonID
-			WHERE v.name = 'Riders Company')
+WHERE FirstName NOT IN (
+	SELECT p.FirstName
+	FROM Person.Person p
+	JOIN Sales.Store v
+	ON p.BusinessEntityID = v.SalesPersonID
+	WHERE v.name = 'Riders Company'
 ;
 
 -- SHOW ALL SALES PEOPLE AND THEIR ORDER COUNTS
