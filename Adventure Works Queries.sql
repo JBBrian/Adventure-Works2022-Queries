@@ -57,3 +57,16 @@ JOIN HumanResources.EmployeeDepartmentHistory hrd
 ON p.BusinessEntityID = hrd.BusinessEntityID
 JOIN HumanResources.Employee hre
 ON hrd.BusinessEntityID = hre.BusinessEntityID;
+
+-- Show average employee retention per job title
+SELECT 
+hre.JobTitle,
+AVG(CASE
+	WHEN hrd.EndDate IS NULL THEN DATEDIFF(YEAR, hrd.StartDate, GETDATE())
+	ELSE DATEDIFF(YEAR, hrd.StartDate, hrd.EndDate)
+END) AS 'AVG Retention(Years)'
+FROM HumanResources.EmployeeDepartmentHistory hrd
+JOIN HumanResources.Employee hre
+ON hrd.BusinessEntityID = hre.BusinessEntityID
+GROUP BY hre.JobTitle
+ORDER BY 'AVG Retention(Years)' DESC;
