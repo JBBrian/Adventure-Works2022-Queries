@@ -23,10 +23,10 @@ ORDER BY s.Bonus DESC;
 SELECT FirstName
 FROM Person.Person
 WHERE FirstName NOT IN (SELECT p.FirstName
-					FROM Person.Person p
-					JOIN Sales.Store v
-					ON p.BusinessEntityID = v.SalesPersonID
-					WHERE v.name = 'Riders Company')
+			FROM Person.Person p
+			JOIN Sales.Store v
+			ON p.BusinessEntityID = v.SalesPersonID
+			WHERE v.name = 'Riders Company')
 ;
 
 -- SHOW ALL SALES PEOPLE AND THEIR ORDER COUNTS
