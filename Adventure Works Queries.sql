@@ -28,6 +28,7 @@ WHERE FirstName NOT IN (
 	JOIN Sales.Store v
 	ON p.BusinessEntityID = v.SalesPersonID
 	WHERE v.name = 'Riders Company'
+	)
 ;
 
 -- SHOW ALL SALES PEOPLE AND THEIR ORDER COUNTS
