@@ -127,4 +127,27 @@ INNER JOIN Sales.SalesReason sr
 ON hr.SalesReasonID = sr.SalesReasonID
 INNER JOIN Sales.SalesOrderHeader t
 ON hr.SalesOrderID = t.SalesOrderID
-GROUP BY sr.ReasonType
+GROUP BY sr.ReasonType;
+
+-- HIGHEST SELLING ITEM PER CATEGORY 
+WITH CTE AS (
+    SELECT
+        pp.Name AS ProductName,
+        cat.Name AS Category,
+        od.OrderQty,
+        ROW_NUMBER() OVER (PARTITION BY cat.Name ORDER BY od.OrderQty DESC) AS Rank
+    FROM Production.ProductSubcategory sub
+    INNER JOIN Production.ProductCategory cat
+        ON sub.ProductCategoryID = cat.ProductCategoryID
+    INNER JOIN Production.Product pp
+        ON sub.ProductSubcategoryID = pp.ProductSubcategoryID
+    INNER JOIN Sales.SalesOrderDetail od
+        ON pp.ProductID = od.ProductID
+)
+SELECT
+    ProductName,
+    Category,
+    OrderQty
+FROM CTE
+WHERE Rank = 1
+ORDER BY Category;
