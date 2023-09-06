@@ -11,6 +11,7 @@ Using Microsofts real world sample database, Adventure Works, to practice using 
 
 Above I have listed just some of the research questions I asked myself and proceeded to answer by querying the database. The code provided [here](https://github.com/JBBrian/Adventure-Works2022-Queries/blob/a3f31ffeebd3dc342e03e38d2c4825c823a5306d/Adventure%20Works%20Queries.sql) details all the research questions and every query developed. Below is just a snippit of the code I wrote.
 
+
 ![Snip](https://github.com/JBBrian/Adventure-Works2022-Queries/blob/66f5d83c4a50ad2c53f7aa15accb165eef8b014d/code_snip.PNG)
 
 Still developing more queries but uploading the project to show progression 👍
