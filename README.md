@@ -14,4 +14,4 @@ Above I have listed just some of the research questions I asked myself and proce
 
 ![Snip](https://github.com/JBBrian/Adventure-Works2022-Queries/blob/66f5d83c4a50ad2c53f7aa15accb165eef8b014d/code_snip.PNG)
 
-Still developing more queries but uploading the project to show progression 👍
+
